@@ -1,7 +1,7 @@
 import requests
 import json
 
-with open('.\secret.json') as f:
+with open('secret.json') as f:
     credentials = json.load(f)
 apiKey = credentials['apikey']
 data = {}
