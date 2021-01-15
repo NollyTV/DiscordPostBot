@@ -1,5 +1,10 @@
 import requests
 import json
+import os
+
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
 
 with open('secret.json') as f:
     credentials = json.load(f)
