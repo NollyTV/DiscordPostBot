@@ -1,7 +1,7 @@
 import requests
 import json
 import os
-# Testing Git merges
+
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
@@ -13,7 +13,7 @@ data = {}
 #data["content"] = "message content"
 data["embeds"] = []
 embed = {}
-# Also testing merge
+
 embed["description"] = ""
 embed["title"] = ""
 embed["color"] = "4289797"
