@@ -7,7 +7,7 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-with open('secret.test.json') as f:
+with open('secret.json') as f:
     credentials = json.load(f)
 apiKey = credentials['apikey']
 data = {}
