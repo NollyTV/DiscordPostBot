@@ -1,5 +1,9 @@
 # Secret files
 secret.json
+secret.test.json
+
+#Vscode
+.vscode/settings.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
