@@ -25,10 +25,7 @@ if date.today().weekday() == 1:
             embed
         ],
     }
-    headers = {
-        "Content-Type": "application/json"
-    }
-    result = requests.post(apiKey, json=data, headers=headers)
+    result = requests.post(apiKey, json=data)
     try:
         result.raise_for_status()
     except requests.exceptions.HTTPError as err:
