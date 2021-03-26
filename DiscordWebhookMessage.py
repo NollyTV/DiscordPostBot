@@ -1,29 +1,43 @@
 import requests
 import json
 import os
+from datetime import date
 
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-with open('secret.json') as f:
-    credentials = json.load(f)
+with open('secret.json') as credentialJson:
+    credentials = json.load(credentialJson)
 apiKey = credentials['apikey']
-data = {}
-#data["content"] = "message content"
-data["embeds"] = []
-embed = {}
 
-embed["description"] = ""
-embed["title"] = ""
-embed["color"] = "4289797"
-data["embeds"].append(embed)
+with open('payload.json') as payloadJson:
+    embedables = json.load(payloadJson)
 
-result = requests.post(apiKey, data=json.dumps(data), headers={"Content-Type": "application/json"})
+if date.today().weekday() == 1:
+    embed = {
 
-try:
-    result.raise_for_status()
-except requests.exceptions.HTTPError as err:
-    print(err)
+        "title": embedables['title'],
+        "color": embedables['color'],
+        "image": {
+            "url": embedables['image']['url']
+        }
+    }
+
+    data = {
+        "embeds": [
+            embed
+        ],
+    }
+    result = requests.post(apiKey, json=data)
+    try:
+        result.raise_for_status()
+    except requests.exceptions.HTTPError as err:
+        print(err)
+    else:
+        print("Payload Delivered Successfully, code {}.".format(result.status_code))
+
 else:
-    print("Payload Delivered Successfully, code {}.".format(result.status_code))
+    print("It is not Tuesday, my dude")
+    exit
+
