@@ -7,16 +7,20 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-with open('secret.json') as f:
-    credentials = json.load(f)
+with open('secret.json') as credentialJson:
+    credentials = json.load(credentialJson)
 apiKey = credentials['apikey']
+
+with open('payload.json') as payloadJson:
+    embedables = json.load(payloadJson)
 
 if date.today().weekday() == 1:
     embed = {
-        "title": "Update your lootsheet, jackalope",
-        "color": "15105570",
+
+        "title": embedables['title'],
+        "color": embedables['color'],
         "image": {
-            "url": "https://i.imgur.com/yeEnrQU.jpeg"
+            "url": embedables['image']['url']
         }
     }
 

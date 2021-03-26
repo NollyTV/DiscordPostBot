@@ -1,6 +1,7 @@
 # Secret files
 secret.json
 secret.test.json
+payload.json
 
 #Vscode
 .vscode/settings.json

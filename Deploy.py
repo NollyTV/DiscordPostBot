@@ -11,14 +11,17 @@ with open('secret.json') as f:
 username = credentials['linuxuser']
 password = credentials['linuxpass']
 server = credentials['linuxserver']
-remotepath = credentials['linuxremotepath']
-localpath = "DiscordWebhookMessage.py"
+secretRemotePath = credentials['secretLocalRemotePath']
+secretLocalPath = credentials['secretLocalPath']
+payloadRemotePath = credentials['payloadRemotePath']
+payloadLocalPath = credentials['payloadLocalPath']
 
 ssh = paramiko.SSHClient()
 ssh.load_host_keys(os.path.expanduser(os.path.join("~", ".ssh", "known_hosts")))
 ssh.connect(server, username=username, password=password)
 sftp = ssh.open_sftp()
-sftp.put(localpath, remotepath)
+sftp.put(secretLocalPath, secretRemotePath)
+sftp.put(payloadLocalPath, payloadRemotePath)
 sftp.close()
 ssh.close()
 
