@@ -18,6 +18,7 @@ if date.today().weekday() == 1:
     embed = {
 
         "title": embedables['title'],
+        "description": embedables['description'],
         "color": embedables['color'],
         "image": {
             "url": embedables['image']['url']
